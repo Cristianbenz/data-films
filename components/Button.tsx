@@ -1,20 +1,23 @@
 import React from 'react'
-import { ObjectType } from 'typescript'
 
 type props = {
-    type: string,
-    styles?: string
+    variant: string;
+    styles?: string;
+    type? : 'button' | 'submit' | 'reset' | undefined;
+    children: string;
 }
 
 const typesStyles = {
     primary: 'bg-sky-500',
-    secondary: 'bg-purple-400'
+    secondary: 'bg-secondary'
 }
 
-function Button({type, styles, ...restProps}: props): React.ReactElement {
+function Button({variant, styles, children, type}: props): React.ReactElement {
 
   return (
-    <button {...restProps} className={`py-2 px-5 rounded-lg ${type === 'primary' && typesStyles.primary} ${type === 'secondary' && typesStyles.secondary} ${styles}`}>Button</button>
+    <button type={type}  className={`py-2 px-5 rounded-lg ${variant === 'primary' && typesStyles.primary} ${variant === 'secondary' && typesStyles.secondary} ${styles}`}>
+      {children}
+    </button>
   )
 }
 

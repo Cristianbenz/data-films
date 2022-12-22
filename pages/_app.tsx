@@ -1,26 +1,17 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import Link from 'next/link'
-import SearchInput from '../components/SearchInput'
+import type { AppProps } from "next/app";
+import "../styles/globals.css";
+import Header from "../components/Header";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <header className='p-5 flex justify-between'>
-        <Link href={'/home'}>
-          <span className='font-bold text-3xl w-max'>Logo</span>
-        </Link>
-        <SearchInput />
-        <nav>
-          <ul className='flex gap-3'>
-            <li>Home</li>
-            <li>Movies</li>
-          </ul>
-        </nav>
-      </header>
-      <main className='p-5'>
-        <Component {...pageProps} />
-      </main>
+      <Header />
+        <main className="max-w-7xl mx-auto">
+          <Component {...pageProps} />
+        </main>
+      <footer className="border-t-secondary border-t-2 border-t-solid flex justify-center items-center w-screen h-28 mt-5">
+        Made by Cbenz
+      </footer>
     </>
-  )
+  );
 }
