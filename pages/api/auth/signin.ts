@@ -26,5 +26,5 @@ export default async function signIn(req: NextApiRequest, res: NextApiResponse) 
         maxAge: 60 * 60 * 24 * 14
     })
     res.setHeader('Set-Cookie', serialized)
-    return res.send('Signed')
+    return res.json({token})
 }

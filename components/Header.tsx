@@ -1,8 +1,11 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useContext } from "react";
+import { userContext } from "../context/User";
 import SearchInput from "../components/SearchInput";
 
 function Header() {
+  const { token } = useContext(userContext)
   const { pathname } = useRouter();
   return (
     <>
@@ -17,12 +20,23 @@ function Header() {
             <SearchInput />
             <nav>
               <ul className="flex gap-3">
-                <li>
-                  <Link href={"/home"}>Movies</Link>
-                </li>
-                <li>
-                  <Link href={"/auth/signout"}>Sign Out</Link>
-                </li>
+                {
+                  token ? (
+                    <li>
+                      <Link href={"/auth/signout"}>Sign Out</Link>
+                    </li>
+                  ) : (
+                    <>
+                      <li>
+                        <Link href={"/home"}>Movies</Link>
+                      </li>
+                      <li>
+                        <Link href={"/auth/signin"}>Sign In</Link>
+                      </li>
+                    </>
+                  )
+                }
+                
               </ul>
             </nav>
           </div>
