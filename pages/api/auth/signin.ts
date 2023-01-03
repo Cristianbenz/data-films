@@ -17,9 +17,9 @@ export default async function signIn(req: NextApiRequest, res: NextApiResponse) 
     const token = jwt.sign({
         exp: (Date.now() / 1000) + 60 * 60 * 25 * 14,
         id: user._id
-    }, String(process.env.JWT_SECRET),)
+    }, String(process.env.NEXT_PUBLIC_JWT_SECRET),)
     const serialized = cookie.serialize('authToken', token, {
-        httpOnly: true,
+        httpOnly: false,
         sameSite: 'strict',
         secure: process.env.NODE_ENV === "production",
         path: '/',

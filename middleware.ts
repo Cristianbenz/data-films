@@ -11,7 +11,7 @@ export default async function middleware(req: NextRequest) {
 		const token = req.cookies.get('authToken')?.value
 
 		try {
-			await jwtVerify(String(token), new TextEncoder().encode(process.env.JWT_SECRET))
+			await jwtVerify(String(token), new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET))
 			return NextResponse.next()
 		} catch (_) {
 			return NextResponse.redirect(new URL('/auth/signin', req.url))
@@ -21,7 +21,7 @@ export default async function middleware(req: NextRequest) {
 	if(authPaths.includes(splitedPath[2])) {
 		const token = req.cookies.get('authToken')?.value
 		try {
-			await jwtVerify(String(token), new TextEncoder().encode(process.env.JWT_SECRET))
+			await jwtVerify(String(token), new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET))
 			return NextResponse.redirect(new URL('/home', req.url))
 		} catch (_) {
 			return NextResponse.next()

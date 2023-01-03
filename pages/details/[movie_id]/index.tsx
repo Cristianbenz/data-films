@@ -6,9 +6,8 @@ type props = {
 }
 
 function Details({details}: props) {
-  
   return (
-    <main className={`w-full h-max bg-[url(https://image.tmdb.org/t/p/original/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg)] bg-cover rounded-xl `}>
+    <div className={`w-screen h-max bg-[url(https://image.tmdb.org/t/p/original/${details.backdrop_path})] bg-cover rounded-xl `}>
       <section className="flex flex-col sm:flex-row gap-7 p-16 backdrop-blur-sm min-h-screen">
         <Image className="w-48 h-max" src={`https://image.tmdb.org/t/p/w300${details.poster_path}`} alt={`Poster of ${details.title}`} width={300} height={113} />
         <div className="flex flex-col">
@@ -25,7 +24,7 @@ function Details({details}: props) {
           <p className="py-4 text-xl">{details.overview}</p>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

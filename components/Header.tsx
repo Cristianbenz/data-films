@@ -9,10 +9,10 @@ function Header() {
   const { pathname } = useRouter();
   return (
     <>
-      {!Boolean(pathname.includes("auth") || pathname === '/') && (
+      {!Boolean(pathname.includes('auth')) && (
         <header className="p-5">
           <div className="flex justify-between max-w-7xl mx-auto flex-1 flex-grow">
-            <Link className="w-max overflow-hidden break-keep" href={"/home"}>
+            <Link className="w-max overflow-hidden break-keep" href={'/home'}>
               <span className="font-extrabold text-transparent text-4xl bg-clip-text bg-gradient-to-r from-fontPrimary to-secondary break-keep">
                 Data-Films
               </span>
@@ -43,7 +43,7 @@ function Header() {
         </header>
       )}
     </>
-  );
+  )
 }
 
-export default Header;
+export default Header
