@@ -6,7 +6,7 @@ export default function signOut(req: NextApiRequest, res: NextApiResponse) {
   if(!authToken || !authToken.length) return res.status(401).json({msg: "No token"})
   
   const serialized = cookie.serialize("authToken", "", {
-    httpOnly: true,
+    httpOnly: false,
     sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
     path: "/",
