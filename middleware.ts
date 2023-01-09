@@ -14,7 +14,7 @@ export default async function middleware(req: NextRequest) {
 			await jwtVerify(String(token), new TextEncoder().encode(process.env.NEXT_PUBLIC_JWT_SECRET))
 			return NextResponse.next()
 		} catch (_) {
-			return NextResponse.redirect(new URL('/auth/signin', req.url))
+			return NextResponse.redirect(new URL('/', req.url))
 		}
 	}
 

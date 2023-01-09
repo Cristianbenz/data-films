@@ -7,8 +7,13 @@ export const userContext = createContext<any>({})
 function UserContextProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | undefined>(undefined)
   const cookies = new Cookies()
-  function signUser(token: string) {
+
+  function signInUser(token: string) {
     setToken(token)
+  }
+
+  function signOutUser() {
+    setToken(undefined)
   }
 
   useEffect(() => {
@@ -24,7 +29,8 @@ function UserContextProvider({ children }: { children: ReactNode }) {
   return (
     <userContext.Provider value={{
       token,
-      signUser
+      signInUser,
+      signOutUser
     }}>
       {children}
     </userContext.Provider>

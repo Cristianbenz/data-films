@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Router from "next/router";
+import {useRouter} from "next/router";
 import axios from "axios";
 import { useContext } from "react";
 import { Form, Formik, FormikHelpers } from "formik";
@@ -10,19 +10,18 @@ import { authSchema } from "../../../types/forms";
 import { IAuthForm } from "../../../types/forms";
 
 function SignIn() {
-  const { signUser } = useContext(userContext)
+  const { signInUser } = useContext(userContext)
   const initialValues: IAuthForm = { username: "", password: "" };
-
+  const {push} = useRouter();
   async function handleSubmit(values: IAuthForm, actions: FormikHelpers<IAuthForm>) {
-    const router = Router;
     const { username, password } = values;
     try {
       const { data } = await axios.post("/api/auth/signin", {
         username: username,
         password: password,
       });
-      signUser(data.token)
-      return router.push("/home");
+      signInUser(data.token)
+      return push("/home");
     } catch (e) {
       const error = e as ErrorEventInit;
       return alert(error.message);

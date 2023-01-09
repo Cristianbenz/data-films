@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { userContext } from "../context/User";
 import SearchInput from "../components/SearchInput";
+import SignOutButton from "./SignOutButton";
 
 function Header() {
   const { token } = useContext(userContext)
@@ -23,7 +24,7 @@ function Header() {
                 {
                   token ? (
                     <li>
-                      <Link href={"/auth/signout"}>Sign Out</Link>
+                      <SignOutButton />
                     </li>
                   ) : (
                     <>

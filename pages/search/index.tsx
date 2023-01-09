@@ -6,7 +6,6 @@ import IMovie from "../../types/movies"
 function Search({results}: {results: Array<IMovie>}) {
   const {query} = useRouter()
   const key = query.title
-  console.log(results)
   return (
     <>
       <div>You are looking for: {key}</div>
